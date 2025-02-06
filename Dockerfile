@@ -1,5 +1,5 @@
 FROM node:18
-WORKDIR /app
+WORKDIR /src/app
 COPY . .
 RUN npm install
 RUN npm run build
