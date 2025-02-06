@@ -5,7 +5,7 @@ pipeline {
             steps {
 				//แก้ตรง team33-neogym ให้เป็นชื่อเดียวกับ pipeline job/item ที่สร้างใน jenkins
                 sh """
-scp -r /var/lib/jenkins/workspace/66025997-Nextjs/* root@43.208.253.87:~/66025997-Nextjs
+scp -r /var/lib/jenkins/workspace/66025997-next-js/* root@43.208.253.87:~/66025997-Nextjs
 """
 
             }
@@ -14,14 +14,14 @@ scp -r /var/lib/jenkins/workspace/66025997-Nextjs/* root@43.208.253.87:~/6602599
         stage("Build Docker Image") {
             steps {
                 //path yaml files
-				ansiblePlaybook playbook: '/var/lib/jenkins/workspace/66025997-Nextjs/playbooks/build.yaml'
+				ansiblePlaybook playbook: '/var/lib/jenkins/workspace/66025997-next-js/playbooks/build.yaml'
             }    
         } 
         
         stage("Create Docker Container") {
             steps {
                 //path yaml files
-				ansiblePlaybook playbook: '/var/lib/jenkins/workspace/66025997-Nextjs/playbooks/deploy.yaml'
+				ansiblePlaybook playbook: '/var/lib/jenkins/workspace/66025997-next-js/playbooks/deploy.yaml'
             }    
         } 
     }
