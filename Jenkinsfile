@@ -4,7 +4,8 @@ pipeline {
         stage("Copy file to Docker server"){
             steps {
 				//แก้ตรง team33-neogym ให้เป็นชื่อเดียวกับ pipeline job/item ที่สร้างใน jenkins
-                sh "scp -r /var/lib/jenkins/workspace/66025997-Nextjs/* root@13.212.94.247:~/66025997-Nextjs"
+                sh "rsync -avz --progress /var/lib/jenkins/workspace/66025997-Nextjs/ root@13.212.94.247:~/66025997-Nextjs
+"
             }
         }
         
